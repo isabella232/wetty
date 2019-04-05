@@ -64,7 +64,7 @@ export default function createServer(
     .use(helmet({ frameguard: false }))
     .use(compression())
     .use(favicon(path.join(distDir, 'favicon.ico')))
-    .use(`${basePath}public`, express.static(distDir))
+    .use(`${basePath}/public`, express.static(distDir))
     .use((req, res, next) => {
       if (
         req.url.substr(-1) === '/' &&
