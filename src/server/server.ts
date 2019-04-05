@@ -37,7 +37,7 @@ export default function createServer(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>${title}</title>
-    <link rel="stylesheet" href="${basePath}/public/index.css" />
+    <link rel="stylesheet" href="${basePath}public/index.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
@@ -54,17 +54,17 @@ export default function createServer(
       <textarea class="editor"></textarea>
     </div>
     <div id="terminal"></div>
-    <script src="${basePath}/public/index.js"></script>
+    <script src="${basePath}public/index.js"></script>
   </body>
 </html>`);
 
   const app = express();
   app
     .use(morgan('combined', { stream: logger.stream }))
-    .use(helmet())
+    .use(helmet({ frameguard: false }))
     .use(compression())
     .use(favicon(path.join(distDir, 'favicon.ico')))
-    .use(`${basePath}/public`, express.static(distDir))
+    .use(`${basePath}public`, express.static(distDir))
     .use((req, res, next) => {
       if (
         req.url.substr(-1) === '/' &&
