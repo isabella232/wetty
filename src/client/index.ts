@@ -15,7 +15,10 @@ const socket = io(window.location.origin, {
 socket.on('connect', () => {
   const term = new Terminal();
   term.open(document.getElementById('terminal'));
-  const defaultOptions = { fontSize: 14 };
+  const defaultOptions = {
+    fontSize: 16,
+    fontFamily: "monospace"
+  };
   let options: any;
   try {
     if (localStorage.options === undefined) {
