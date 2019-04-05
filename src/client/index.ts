@@ -55,7 +55,6 @@ socket.on('connect', () => {
     document.getElementById('options').classList.toggle('opened');
     e.preventDefault();
   });
-  window.addEventListener('beforeunload', handler, false);
   /*
     term.scrollPort_.screen_.setAttribute('contenteditable', 'false');
   */
